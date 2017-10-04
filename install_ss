@@ -4,7 +4,7 @@
    
 case "$1" in
 "add")
-	wget https://github.com/usualwyy/xiaomi_ss/raw/master/ssr.mt -O /tmp/ss.mt >/dev/null 2>&1
+	cp ./ssr.mt /tmp/ss.mt >/dev/null 2>&1
 	if [ $? -ne 0 ];then
 		echo -e "1801\c"
 		exit
@@ -50,6 +50,7 @@ case "$1" in
 	sed -i "/misstar-ss/d" /etc/misstar/scripts/file_check
 	sed -i "/misstar-ss/d" /etc/misstar/scripts/Monitor
 	sed -i "/script\/ss/d" /etc/misstar/scripts/Dayjob
+	rm /usr/lib/lua/luci/controller/api/ss.lua
 	rm -rf /tmp/luci-indexcache /tmp/luci-modulecache/*
 	 ;;
 esac
